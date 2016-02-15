@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+<style>
+
+div, ul, li {
+	box-sizing: border-box;
+}
+.wrapper {
+	overflow: hidden;
+}
+.slot {
+	display: block;
+	float: left;
+	width: 100px;
+	height: 66px;
+	overflow: hidden;
+	position: relative;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+}
+li {
+	display: block;
+	border: solid 1px #999;
+	width: 100px;
+	height: 66px;
+}
+
+
+</style>
+  <title>Slot Machine</title>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="slot">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<div class="slot">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<div class="slot">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</div>
+
+<button>trigger</button>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+
+var rollSlot = function($slot) {
+	var $ul = $slot.find('ul');
+	var count = 10 + Math.floor(Math.random() * 10);
+	while (count) {
+		$ul.animate({ top: "-=66px" }, 50, function(){
+			var $liFirst = $ul.find('li:first-child');
+			$liFirst.detach();
+			$ul.append($liFirst);
+			$ul.css({ top: 0 });
+		});
+		count--;
+	}
+	console.log()
+}
+
+
+$('button').on('click',function(){
+	$('.slot').each(function(){
+		rollSlot($(this));
+	})
+})
+
+
+</script>
+
+</body>
+</html>
