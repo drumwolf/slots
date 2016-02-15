@@ -62,45 +62,8 @@ li {
 
 <button>trigger</button>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-
-var hash = {};
-
-var rollSlot = function($slot) {
-	var $ul = $slot.find('ul');
-	var slotId = $ul.attr('id');
-	var spinCount = 10 + Math.floor(Math.random() * 10);
-	var spinsRemaining = spinCount;
-	while (spinCount) {
-		$ul.animate({ top: "-=66px" }, 50, function(){
-			var $first = $ul.find('li').first();
-			$first.detach();
-			$ul.append($first);
-			$ul.css({ top: 0 });
-			spinsRemaining--;
-			if (spinsRemaining === 0) {
-				var final = $ul.find('li').first().html();
-				hash[slotId] = final;
-				if (hash['machine'] && hash['filter'] && hash['grounds']) {
-					console.log(hash['machine'] + " / " + hash['filter'] + " / " + hash['grounds']);
-				}
-			}
-		});
-		spinCount--;
-	}
-}
-
-
-$('button').on('click',function(){
-	hash = {};
-	$('.slot').each(function(){
-		rollSlot($(this));
-	})
-})
-
-
-</script>
+<script src="jquery.min.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>
