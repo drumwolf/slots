@@ -70,22 +70,24 @@ var hash = {};
 var rollSlot = function($slot) {
 	var $ul = $slot.find('ul');
 	var slotId = $ul.attr('id');
-	var count = 10 + Math.floor(Math.random() * 10);
-	var rotationCount = count;
-	while (count) {
+	var spinCount = 10 + Math.floor(Math.random() * 10);
+	var spinsRemaining = spinCount;
+	while (spinCount) {
 		$ul.animate({ top: "-=66px" }, 50, function(){
 			var $first = $ul.find('li').first();
 			$first.detach();
 			$ul.append($first);
 			$ul.css({ top: 0 });
-			rotationCount--;
-			if (rotationCount === 0) {
+			spinsRemaining--;
+			if (spinsRemaining === 0) {
 				var final = $ul.find('li').first().html();
 				hash[slotId] = final;
-				console.log(hash['machine'], hash['filter'], hash['grounds']);
+				if (hash['machine'] && hash['filter'] && hash['grounds']) {
+					console.log(hash['machine'] + " / " + hash['filter'] + " / " + hash['grounds']);
+				}
 			}
 		});
-		count--;
+		spinCount--;
 	}
 }
 
