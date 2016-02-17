@@ -1,6 +1,24 @@
-var reels = {};
-
-var spinReel = function($reel) {
+var SlotMachine = function() {
+	this.reels = {};
+	this.$slotMachine = $('#slotmachine');
+	this.$reel   = this.$slotMachine.find('.reel');
+	this.$button = this.$slotMachine.find('button');
+	this.init();
+}
+SlotMachine.prototype.init = function() {
+	this.activateButton();
+}
+SlotMachine.prototype.activateButton = function() {
+	var _this = this;
+	_this.$button.on('click',function(){
+		_this.reels = {};
+		_this.$reel.each(function(){
+			var $reel = $(this);
+			_this.spinReel($reel);
+		});
+	});
+}
+SlotMachine.prototype.spinReel = function($reel) {
 	var reelId = $reel.attr('id');
 	var spinCount = 10 + Math.floor(Math.random() * 10);
 	var spinsRemaining = spinCount;
@@ -11,27 +29,23 @@ var spinReel = function($reel) {
 			$reel.append($first).css({ top: 0 });
 			spinsRemaining--;
 			if (spinsRemaining === 0) {
-				reels[reelId] = $reel.find('li').first().html();
-				if (allReelsFilled()) {
-					processResults();
+				this.reels[reelId] = $reel.find('li').first().html();
+				if (this.allReelsFilled()) {
+					this.processResults();
 				}
 			}
-		});
+		}.bind(this));
 		spinCount--;
 	}
 }
-
-var allReelsFilled = function() {
-	return (reels['maker'] && reels['filter'] && reels['grounds']);
+SlotMachine.prototype.allReelsFilled = function() {
+	return (this.reels['maker'] && this.reels['filter'] && this.reels['grounds']);
+}
+SlotMachine.prototype.processResults = function() {
+	console.log(this.reels['maker'] + " / " + this.reels['filter'] + " / " + this.reels['grounds']);
 }
 
-var processResults = function() {
-	console.log(reels['maker'] + " / " + reels['filter'] + " / " + reels['grounds']);
-}
-
-$('button').on('click',function(){
-	reels = {};
-	$('.reel').each(function(){
-		spinReel($(this));
-	})
+// instantiate new instance of SlotMachine
+$(function(){
+	new SlotMachine();
 })
