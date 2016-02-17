@@ -1,7 +1,7 @@
 var reels = {};
 
 var spinReel = function($reel) {
-	var slotId = $reel.attr('id');
+	var reelId = $reel.attr('id');
 	var spinCount = 10 + Math.floor(Math.random() * 10);
 	var spinsRemaining = spinCount;
 	while (spinCount) {
@@ -11,14 +11,18 @@ var spinReel = function($reel) {
 			$reel.append($first).css({ top: 0 });
 			spinsRemaining--;
 			if (spinsRemaining === 0) {
-				reels[slotId] = $reel.find('li').first().html();
-				if (reels['maker'] && reels['filter'] && reels['grounds']) {
+				reels[reelId] = $reel.find('li').first().html();
+				if (allReelsFilled()) {
 					console.log(reels['maker'] + " / " + reels['filter'] + " / " + reels['grounds']);
 				}
 			}
 		});
 		spinCount--;
 	}
+}
+
+var allReelsFilled = function() {
+	return (reels['maker'] && reels['filter'] && reels['grounds']);
 }
 
 $('button').on('click',function(){
