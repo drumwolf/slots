@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-<style>
+<meta charset="UTF-8">
+<style type="text/css">
 
 div, ul, li {
 	box-sizing: border-box;
@@ -10,7 +10,7 @@ div, ul, li {
 .wrapper {
 	overflow: hidden;
 }
-.slot {
+.window {
 	display: block;
 	float: left;
 	width: 100px;
@@ -18,41 +18,40 @@ div, ul, li {
 	overflow: hidden;
 	position: relative;
 }
-ul {
+.reel {
 	margin: 0;
 	padding: 0;
 	position: absolute;
 }
-li {
+.reel li {
 	display: block;
 	border: solid 1px #999;
 	width: 100px;
 	height: 66px;
 }
 
-
 </style>
-  <title>Slot Machine</title>
+<title>Slot Machine</title>
 </head>
 <body>
 
 <div class="wrapper">
-	<div class="slot">
-		<ul id="machine">
+	<div class="window">
+		<ul id="maker" class="reel">
 			<li>1</li>
 			<li>2</li>
 			<li>3</li>
 		</ul>
 	</div>
-	<div class="slot">
-		<ul id="filter">
+	<div class="window">
+		<ul id="filter" class="reel">
 			<li>1</li>
 			<li>2</li>
 			<li>3</li>
 		</ul>
 	</div>
-	<div class="slot">
-		<ul id="grounds">
+	<div class="window">
+		<ul id="grounds" class="reel">
 			<li>1</li>
 			<li>2</li>
 			<li>3</li>

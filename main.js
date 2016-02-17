@@ -1,20 +1,19 @@
-var hash = {};
+var reels = {};
 
-var rollSlot = function($slot) {
-	var $ul = $slot.find('ul');
-	var slotId = $ul.attr('id');
+var spinReel = function($reel) {
+	var slotId = $reel.attr('id');
 	var spinCount = 10 + Math.floor(Math.random() * 10);
 	var spinsRemaining = spinCount;
 	while (spinCount) {
-		$ul.animate({ top: "-=66px" }, 50, function(){
-			var $first = $ul.find('li').first();
+		$reel.animate({ top: "-=66px" }, 50, function(){
+			var $first = $reel.find('li').first();
 			$first.detach();
-			$ul.append($first).css({ top: 0 });
+			$reel.append($first).css({ top: 0 });
 			spinsRemaining--;
 			if (spinsRemaining === 0) {
-				hash[slotId] = $ul.find('li').first().html();
-				if (hash['machine'] && hash['filter'] && hash['grounds']) {
-					console.log(hash['machine'] + " / " + hash['filter'] + " / " + hash['grounds']);
+				reels[slotId] = $reel.find('li').first().html();
+				if (reels['maker'] && reels['filter'] && reels['grounds']) {
+					console.log(reels['maker'] + " / " + reels['filter'] + " / " + reels['grounds']);
 				}
 			}
 		});
@@ -22,10 +21,9 @@ var rollSlot = function($slot) {
 	}
 }
 
-
 $('button').on('click',function(){
-	hash = {};
-	$('.slot').each(function(){
-		rollSlot($(this));
+	reels = {};
+	$('.reel').each(function(){
+		spinReel($(this));
 	})
 })
