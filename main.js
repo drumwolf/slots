@@ -16,6 +16,7 @@ SlotMachine.prototype.activateButton = function() {
 			var $reel = $(this);
 			_this.spinReel($reel);
 		});
+		$(this).addClass('inactive');
 	});
 }
 SlotMachine.prototype.spinReel = function($reel) {
@@ -42,6 +43,7 @@ SlotMachine.prototype.allReelsFilled = function() {
 	return (this.reels['maker'] && this.reels['filter'] && this.reels['grounds']);
 }
 SlotMachine.prototype.processResults = function() {
+	this.$button.removeClass('inactive');
 	console.log(this.reels['maker'] + " / " + this.reels['filter'] + " / " + this.reels['grounds']);
 }
 
