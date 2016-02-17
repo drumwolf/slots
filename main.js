@@ -13,7 +13,7 @@ var spinReel = function($reel) {
 			if (spinsRemaining === 0) {
 				reels[reelId] = $reel.find('li').first().html();
 				if (allReelsFilled()) {
-					console.log(reels['maker'] + " / " + reels['filter'] + " / " + reels['grounds']);
+					processResults();
 				}
 			}
 		});
@@ -23,6 +23,10 @@ var spinReel = function($reel) {
 
 var allReelsFilled = function() {
 	return (reels['maker'] && reels['filter'] && reels['grounds']);
+}
+
+var processResults = function() {
+	console.log(reels['maker'] + " / " + reels['filter'] + " / " + reels['grounds']);
 }
 
 $('button').on('click',function(){
