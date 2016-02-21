@@ -3,6 +3,7 @@ var SlotMachine = function() {
 	this.$slotMachine = $('#slotmachine');
 	this.$reel   = this.$slotMachine.find('.reel');
 	this.$lever = this.$slotMachine.find('.lever');
+	this.$prizeWindow = this.$slotMachine.find('.prize-window');
 	this.init();
 }
 SlotMachine.prototype.init = function() {
