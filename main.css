@@ -12,9 +12,7 @@ div, ul, li {
 }
 .wrapper {
 	display: block;
-	float: left;
 	overflow: hidden;
-	margin-right: 18px;
 }
 .window {
 	background-color: #FFFFFF;
@@ -49,6 +47,7 @@ div, ul, li {
 	cursor: pointer;
 	display: block;
 	float: left;
+	margin-left: 15px;
 	position: relative;
 }
 .lever-slot {
@@ -78,4 +77,13 @@ div, ul, li {
 }
 .lever.active .lever-slot {
 	background-color: #000000;
+}
+.prize-window {
+	background-color: #C9C9C9;
+	border-radius: 3px;
+	box-shadow: 0 0 10px 1px #999 inset;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 20px;
+	width: 100%;
 }
