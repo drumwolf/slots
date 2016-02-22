@@ -96,7 +96,7 @@ div, ul, li {
 	position: absolute;
 }
 .reel li {
-	background-image: url('thumbtack-sprite.png');
+	background-image: url('reel-sprite.png');
 	display: block;
 	line-height: 180px;
 	text-align: center;
