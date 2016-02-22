@@ -208,6 +208,8 @@ div, ul, li {
 }
 .drink-window {
 	background-color: #333333;
+	background-image: url('drink.png');
+	background-position: 0 -5px;
 	border: groove 2px #CCCCCC;
 	border-radius: 5px;
 	display: block;
@@ -215,7 +217,7 @@ div, ul, li {
 	overflow: hidden;
 	position: relative;
 	width: 100px;
-	height: 50px;
+	height: 60px;
 }
 .drink-window:before {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e2e2e2+0,dbdbdb+50,d1d1d1+51,fefefe+100;Grey+Gloss+%231 */
