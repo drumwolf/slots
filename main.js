@@ -1,6 +1,6 @@
 var SlotMachine = function() {
 	this.reels = {};
-	this.$slotMachine = $('#slotmachine');
+	this.$slotMachine = $('#slot-machine');
 	this.$reel   = this.$slotMachine.find('.reel');
 	this.$lever = this.$slotMachine.find('.lever');
 	this.$prizeWindow = this.$slotMachine.find('.prize-window');
