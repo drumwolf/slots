@@ -2,6 +2,7 @@ var SlotMachine = function() {
 	this.reels = {};
 	this.$slotMachine = $('#slot-machine');
 	this.$reel   = this.$slotMachine.find('.reel');
+	this.$leverArea = this.$slotMachine.find('.lever-area');
 	this.$lever = this.$slotMachine.find('.lever');
 	this.$prizeWindow = this.$slotMachine.find('.prize-window');
 	this.init();
@@ -11,13 +12,13 @@ SlotMachine.prototype.init = function() {
 }
 SlotMachine.prototype.activateButton = function() {
 	var _this = this;
-	_this.$lever.on('click',function(){
+	_this.$leverArea.on('click',function(){
 		_this.reels = {};
 		_this.$reel.each(function(){
 			var $reel = $(this);
 			_this.spinReel($reel);
 		});
-		$(this).addClass('active');
+		_this.$lever.addClass('active');
 	});
 }
 SlotMachine.prototype.spinReel = function($reel) {
