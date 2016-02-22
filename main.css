@@ -138,7 +138,7 @@ div, ul, li {
 	position: relative;
 	width: 40px;
 }
-.lever-active {
+.lever-area.active {
 	cursor: default;
 	pointer-events: none;
 }
@@ -170,10 +170,10 @@ div, ul, li {
 	width: 20px;
 	height: 8px;
 }
-.lever-active .lever {
+.lever-area.down .lever {
 	transform: rotateX(180deg);
 }
-.message-window {
+.marquee {
 	background-color: #C9C9C9;
 	border-radius: 3px;
 	box-shadow: 0 0 10px 1px #999 inset;

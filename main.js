@@ -1,23 +1,25 @@
 var SlotMachine = function() {
 	this.reels = {};
 	this.$slotMachine   = $('#slot-machine');
-	this.$reel          = this.$slotMachine.find('.reel');
-	this.$leverArea     = this.$slotMachine.find('.lever-area');
-	this.$lever         = this.$slotMachine.find('.lever');
-	this.$messageWindow = this.$slotMachine.find('.message-window');
+	this.$reel    = this.$slotMachine.find('.reel');
+	this.$lever   = this.$slotMachine.find('.lever-area');
+	this.$marquee = this.$slotMachine.find('.marquee');
 	this.init();
 }
 SlotMachine.prototype.init = function() {
 	this.pullLever();
 }
 SlotMachine.prototype.pullLever = function() {
-	this.$leverArea.on('click',function(){
-		this.$leverArea.addClass('lever-active');
-		this.spinAllReels();
+	this.$lever.on('click', function(e){
+		if (this.$lever.hasClass('down')) {
+			this.resetLever();
+		} else {
+			this.spinAllReels();
+		}
 	}.bind(this));
 }
 SlotMachine.prototype.spinAllReels = function() {
-	var _this = this;
+	this.$lever.addClass('active down');
 	this.reels = {};
 	this.$reel.each(function(index, reel){
 		var $reel = $(reel);
@@ -50,18 +52,18 @@ SlotMachine.prototype.allReelsFinished = function() {
 SlotMachine.prototype.processResults = function() {
 	var reels = this.reels;
 	var drink = (reels['maker'] === reels['filter'] && reels['maker'] === reels['grounds']) ? reels['maker'] : null;
-	this.$messageWindow.find('p').hide();
+	this.$marquee.find('p').hide();
 	if (drink) {
-		this.$messageWindow.find('.win').show();
-		this.$messageWindow.find('.drink').html(drink);
+		this.$marquee.find('.win').show();
+		this.$marquee.find('.drink').html(drink);
 	} else {
-		this.$messageWindow.find('.lose').show();
+		this.$marquee.find('.lose').show();
 	}
-	setTimeout(this.resetLever.bind(this), 1000);
+	this.$lever.removeClass('active')
 }
 SlotMachine.prototype.resetLever = function() {
-	this.$leverArea.removeClass('lever-active');
-	this.$messageWindow.find('.default').show();
+	this.$lever.removeClass('down');
+	this.$marquee.find('.default').show();
 }
 
 // instantiate new instance of SlotMachine
