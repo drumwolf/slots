@@ -1,10 +1,10 @@
 var SlotMachine = function() {
 	this.reels = {};
-	this.$slotMachine = $('#slot-machine');
-	this.$reel        = this.$slotMachine.find('.reel');
-	this.$leverArea   = this.$slotMachine.find('.lever-area');
-	this.$lever       = this.$slotMachine.find('.lever');
-	this.$prizeWindow = this.$slotMachine.find('.prize-window');
+	this.$slotMachine   = $('#slot-machine');
+	this.$reel          = this.$slotMachine.find('.reel');
+	this.$leverArea     = this.$slotMachine.find('.lever-area');
+	this.$lever         = this.$slotMachine.find('.lever');
+	this.$messageWindow = this.$slotMachine.find('.message-window');
 	this.init();
 }
 SlotMachine.prototype.init = function() {
@@ -12,7 +12,7 @@ SlotMachine.prototype.init = function() {
 }
 SlotMachine.prototype.pullLever = function() {
 	this.$leverArea.on('click',function(){
-		this.$lever.addClass('active');
+		this.$leverArea.addClass('lever-active');
 		this.spinAllReels();
 	}.bind(this));
 }

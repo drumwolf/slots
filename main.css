@@ -138,6 +138,10 @@ div, ul, li {
 	position: relative;
 	width: 40px;
 }
+.lever-active {
+	cursor: default;
+	pointer-events: none;
+}
 .lever-groove {
 	background-color: #7F7F7F;
 	border-radius: 2px;
@@ -166,8 +170,7 @@ div, ul, li {
 	width: 20px;
 	height: 8px;
 }
-.lever.active {
-	pointer-events: none;
+.lever-active .lever {
 	transform: rotateX(180deg);
 }
 .message-window {
