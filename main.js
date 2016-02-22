@@ -4,6 +4,7 @@ var SlotMachine = function() {
 	this.$reel    = this.$slotMachine.find('.reel');
 	this.$lever   = this.$slotMachine.find('.lever-area');
 	this.$marquee = this.$slotMachine.find('.marquee');
+	this.$drinkWindow = this.$slotMachine.find('.drink-window');
 	this.init();
 }
 SlotMachine.prototype.init = function() {
@@ -56,6 +57,7 @@ SlotMachine.prototype.processResults = function() {
 	if (drink) {
 		this.$marquee.find('.win').show();
 		this.$marquee.find('.drink').html(drink);
+		this.$drinkWindow.addClass('open');
 	} else {
 		this.$marquee.find('.lose').show();
 	}
@@ -64,6 +66,7 @@ SlotMachine.prototype.processResults = function() {
 SlotMachine.prototype.resetLever = function() {
 	this.$lever.removeClass('down');
 	this.$marquee.find('.default').show();
+	this.$drinkWindow.removeClass('open');
 }
 
 // instantiate new instance of SlotMachine
