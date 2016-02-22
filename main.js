@@ -31,7 +31,7 @@ SlotMachine.prototype.spinReel = function($reel) {
 			$reel.append($first).css({ top: 0 });
 			spinsRemaining--;
 			if (spinsRemaining === 0) {
-				this.reels[reelId] = $reel.find('li').first().html();
+				this.reels[reelId] = $reel.find('li').first().data('drink');
 				if (this.allReelsFilled()) {
 					this.processResults();
 				}

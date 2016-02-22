@@ -18,7 +18,6 @@ div, ul, li {
 	background-color: #FFFFFF;
 	border: solid 1px #999;
 	border-radius: 3px;
-	box-shadow: inset 0 24px 30px -12px #696868, inset  0 -24px 30px -12px #696868;
 	display: block;
 	float: left;
 	margin-right: 10px;
@@ -27,17 +26,54 @@ div, ul, li {
 	overflow: hidden;
 	position: relative;
 }
+.window:after {
+	box-shadow: inset 0 24px 30px -12px #696868, inset  0 -24px 30px -12px #696868;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 .reel {
 	margin: 0;
 	padding: 0;
 	position: absolute;
 }
 .reel li {
+	background-image: url('thumbtack-sprite.png');
 	display: block;
 	line-height: 180px;
 	text-align: center;
 	width: 100px;
 	height: 180px;
+}
+#maker .coffee {
+	background-position: 0 0;
+}
+#maker .tea {
+	background-position: -100px 0;
+}
+#maker .espresso {
+	background-position: 100px 0;
+}
+#filter .coffee {
+	background-position: 0 -180px;
+}
+#filter .tea {
+	background-position: -100px -180px;
+}
+#filter .espresso {
+	background-position: 100px -180px;
+}
+#grounds .coffee {
+	background-position: 0 180px;
+}
+#grounds .tea {
+	background-position: -100px 180px;
+}
+#grounds .espresso {
+	background-position: 100px 180px;
 }
 .inactive {
 	background-color: #CCC;
