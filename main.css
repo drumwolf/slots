@@ -178,8 +178,12 @@ div, ul, li {
 	border-radius: 3px;
 	box-shadow: 0 0 10px 1px #999 inset;
 	clear: left;
+	font-family: 'Raleway Dots';
+	font-size: 16px;
 	height: 30px;
 	line-height: 30px;
+	overflow: hidden;
 	position: relative;
+	text-align: center;
 	width: 100%;
 }

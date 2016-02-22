@@ -48,9 +48,20 @@ SlotMachine.prototype.allReelsFinished = function() {
 	return (this.reels['maker'] && this.reels['filter'] && this.reels['grounds']);
 }
 SlotMachine.prototype.processResults = function() {
-	//this.$lever.removeClass('active');
-	console.log(this.reels['maker'] + " / " + this.reels['filter'] + " / " + this.reels['grounds']);
-
+	var reels = this.reels;
+	var drink = (reels['maker'] === reels['filter'] && reels['maker'] === reels['grounds']) ? reels['maker'] : null;
+	this.$messageWindow.find('p').hide();
+	if (drink) {
+		this.$messageWindow.find('.win').show();
+		this.$messageWindow.find('.drink').html(drink);
+	} else {
+		this.$messageWindow.find('.lose').show();
+	}
+	setTimeout(this.resetLever.bind(this), 1000);
+}
+SlotMachine.prototype.resetLever = function() {
+	this.$leverArea.removeClass('lever-active');
+	this.$messageWindow.find('.default').show();
 }
 
 // instantiate new instance of SlotMachine
